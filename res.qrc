@@ -1,0 +1,29 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+    <file alias="kamatis-0.png">res/images/kamatis-0.png</file>
+    <file alias="kamatis-1.png">res/images/kamatis-1.png</file>
+    <file alias="kamatis-2.png">res/images/kamatis-2.png</file>
+    <file alias="kamatis-3.png">res/images/kamatis-3.png</file>
+    <file alias="kamatis-4.png">res/images/kamatis-4.png</file>
+    <file alias="kamatis-5.png">res/images/kamatis-5.png</file>
+    <file alias="kamatis-6.png">res/images/kamatis-6.png</file>
+    <file alias="kamatis-7.png">res/images/kamatis-7.png</file>
+    <file alias="kamatis-8.png">res/images/kamatis-8.png</file>
+    <file alias="kamatis-9.png">res/images/kamatis-9.png</file>
+    <file alias="kamatis-10.png">res/images/kamatis-10.png</file>
+    <file alias="kamatis-11.png">res/images/kamatis-11.png</file>
+    <file alias="kamatis-paused-0.png">res/images/kamatis-paused-0.png</file>
+    <file alias="kamatis-paused-1.png">res/images/kamatis-paused-1.png</file>
+    <file alias="kamatis-paused-2.png">res/images/kamatis-paused-2.png</file>
+    <file alias="kamatis-paused-3.png">res/images/kamatis-paused-3.png</file>
+    <file alias="kamatis-paused-4.png">res/images/kamatis-paused-4.png</file>
+    <file alias="kamatis-paused-5.png">res/images/kamatis-paused-5.png</file>
+    <file alias="kamatis-paused-6.png">res/images/kamatis-paused-6.png</file>
+    <file alias="kamatis-paused-7.png">res/images/kamatis-paused-7.png</file>
+    <file alias="kamatis-paused-8.png">res/images/kamatis-paused-8.png</file>
+    <file alias="kamatis-paused-9.png">res/images/kamatis-paused-9.png</file>
+    <file alias="kamatis-paused-10.png">res/images/kamatis-paused-10.png</file>
+    <file alias="kamatis-paused-11.png">res/images/kamatis-paused-11.png</file>
+    <file alias="kamatis.svg">res/images/kamatis.svg</file>
+</qresource>
+</RCC>
