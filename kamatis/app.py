@@ -54,6 +54,7 @@ class Kamatis(QApplication):
         super(Kamatis, self).__init__(*args)
         self.setOrganizationName('Fumisoft')
         self.setApplicationName(self.__application_name)
+        self.setQuitOnLastWindowClosed(False)
 
         self.__player = QMediaPlayer(self)
 
