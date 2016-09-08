@@ -7,7 +7,6 @@ from .qt import *
 
 import os
 import sys
-import numpy as np
 import types
 
 from collections import defaultdict, OrderedDict
