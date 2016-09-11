@@ -10,6 +10,7 @@ from PyQt5.QtMultimedia import (
     )
 from PyQt5.QtWidgets import QApplication
 from textwrap import dedent
+import logging
 import os
 import signal
 import sys
@@ -56,6 +57,8 @@ class Kamatis(QApplication):
         self.setApplicationName(self.__application_name)
         self.setQuitOnLastWindowClosed(False)
 
+        self.__setup_logging()
+
         self.__player = QMediaPlayer(self)
 
         self.__period_steps = 12
@@ -88,6 +91,29 @@ class Kamatis(QApplication):
         self.__tray_icon.show()
 
         self.__init_state()
+
+    def __setup_logging(self):
+        logging.root.setLevel(logging.WARNING)
+        formatter = logging.Formatter(
+            '%(levelname)-8s %(asctime)s [%(module)s:%(funcName)s:%(lineno)s] '
+            '%(message)s'
+            )
+        location_type = QStandardPaths.AppLocalDataLocation
+        data_dir = QStandardPaths.standardLocations(location_type)[0]
+
+        console_handler = logging.StreamHandler(sys.stdout)
+        console_handler.setFormatter(formatter)
+        logging.root.addHandler(console_handler)
+
+        isdir = util.makedirs(data_dir)
+        if isdir:
+            log_file = os.path.join(
+                data_dir,
+                '{}.log'.format(self.__application_name.lower())
+                )
+            file_handler = logging.FileHandler(log_file)
+            file_handler.setFormatter(formatter)
+            logging.root.addHandler(file_handler)
 
     def __init_state(self):
         self.__apply_settings()
