@@ -8,7 +8,10 @@ from PyQt5.QtMultimedia import (
     QMediaContent,
     QMediaPlayer,
     )
-from PyQt5.QtWidgets import QApplication
+from PyQt5.QtWidgets import (
+    QApplication,
+    QSystemTrayIcon,
+    )
 from textwrap import dedent
 import logging
 import os
@@ -177,6 +180,14 @@ class Kamatis(QApplication):
             action = 'remove'
             success = self.__remove_autostart_entry(file_path)
 
+        if not success:
+            template = 'Cannot {} autostart file. See log for more info.'
+            message = template.format(action)
+            self.__tray_icon.showMessage(
+                self.__application_name,
+                message,
+                QSystemTrayIcon.Warning,
+                )
 
     def __create_autostart_entry(self, autostart_dir, file_path):
         isdir = util.makedirs(autostart_dir)
