@@ -16,6 +16,7 @@ import signal
 import sys
 
 from kamatis import res  # noqa
+from kamatis import util
 from kamatis.ext.pyqtconfig import (
     ConfigManager,
     QSettingsManager,
@@ -170,16 +171,43 @@ class Kamatis(QApplication):
         file_path = os.path.join(autostart_dir, file_name)
 
         if self.__saved_settings.get('autostart'):
+            action = 'create'
+            success = self.__create_autostart_entry(autostart_dir, file_path)
+        else:
+            action = 'remove'
+            success = self.__remove_autostart_entry(file_path)
+
+
+    def __create_autostart_entry(self, autostart_dir, file_path):
+        isdir = util.makedirs(autostart_dir)
+        if not isdir:
+            return False
+
+        try:
             with open(file_path, 'w') as f:
                 f.write(dedent(self.__desktop_file_entry).lstrip())
-            return
+        except:
+            logging.warning('Cannot create autostart file.', exc_info=True)
+            return False
+
+        return True
+
+    def __remove_autostart_entry(self, file_path):
+        success = True
 
         try:
             os.unlink(file_path)
         except OSError as err:
             if err.errno == 2:  # File does not exist, ignore.
-                return
-            raise
+                pass
+            else:
+                logging.warning('Cannot remove autostart file.', exc_info=True)
+                success = False
+        except:
+            logging.warning('Cannot remove autostart file.', exc_info=True)
+            success = False
+
+        return success
 
     def __load_sound_file(self):
         sound_file_path = self.__saved_settings.get('chosen_sound')
