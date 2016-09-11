@@ -58,8 +58,8 @@ class SoundComboBox(QComboBox):
         # XXX: Setting current index sets the value of handled key in
         # ConfigManager to the text instead of the data. So would have to
         # select again manually. Seems to have been fixed?
-        self.setCurrentIndex(0)
         self.__on_entries_updated()
+        self.setCurrentIndex(0)
 
         # Resize settings window to show full name of chosen sound file.
         parent = self.parent()
