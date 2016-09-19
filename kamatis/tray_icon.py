@@ -78,6 +78,9 @@ class TrayIcon(QSystemTrayIcon):
         self.__period_step = progress
         self.__set_icon()
 
+    def __on_quit(self):
+        self.__app.quit()
+
     def __set_period_str(self, period_str):
         self.__period_str = period_str
         text = '{}\n{}'.format(self.__app.applicationName(), period_str)
@@ -110,7 +113,7 @@ class TrayIcon(QSystemTrayIcon):
 
         menu.addSeparator()
         quit = menu.addAction('Quit')
-        quit.triggered.connect(self.__app.quit)
+        quit.triggered.connect(self.__on_quit)
 
     def __get_remaining_text(self, msecs):
         secs = int(msecs / 1000)
