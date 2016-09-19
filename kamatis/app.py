@@ -271,7 +271,7 @@ class Kamatis(QApplication):
     def __start_progress_timer(self, *args):
         self.__progress = (self.__progress + 1) % self.__period_steps
         self.period_progressed.emit(self.__progress)
-        progress_length = self.__timer_length / self.__period_steps
+        progress_length = int(self.__timer_length / self.__period_steps)
         self.__progress_timer.setInterval(progress_length)
         self.__progress_timer.start()
 
@@ -280,7 +280,7 @@ class Kamatis(QApplication):
         self.__saved_settings.set_many(new_settings)
 
     def save_sound_settings(self):
-        for key in self.sound_settings.iterkeys():
+        for key in self.sound_settings.keys():
             self.__saved_settings.set(key, self.settings.get(key))
 
     def start(self):

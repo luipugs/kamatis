@@ -29,7 +29,7 @@ class SettingsWidget(QWidget):
         super(SettingsWidget, self).__init__(parent)
         self.__app = QApplication.instance()
         self.__settings = self.__app.settings
-        self.__sound_settings_keys = self.__app.sound_settings.keys()
+        self.__sound_settings_keys = list(self.__app.sound_settings.keys())
         self.__default_settings = self.__app.default_settings
         self.__orig_settings = self.__get_app_settings()
 

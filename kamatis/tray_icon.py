@@ -113,7 +113,7 @@ class TrayIcon(QSystemTrayIcon):
         quit.triggered.connect(self.__app.quit)
 
     def __get_remaining_text(self, msecs):
-        secs = msecs / 1000
+        secs = int(msecs / 1000)
         mins, secs = divmod(secs, 60)
         hours, mins = divmod(mins, 60)
         time_str = '{:02d}:{:02d} to go'.format(mins, secs)
