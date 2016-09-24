@@ -2,6 +2,7 @@ from setuptools import (
     find_packages,
     setup,
     )
+from textwrap import dedent
 import os
 import re
 
@@ -13,6 +14,15 @@ with open(os.path.join('kamatis', '__init__.py'), 'r') as fd:
 if not version:
     raise RuntimeError('Cannot find version information')
 
+long_desc = '''\
+    Kamatis is a Pomodoro Technique timer written in PyQt5. Features include:
+
+    - customizable work, short break, and long break periods
+    - sound and desktop notifications
+    - app control through the tray icon on supported desktop environments
+    - remaining time indication
+    '''
+
 
 def main():
     setup(
@@ -23,7 +33,8 @@ def main():
         maintainer='Luis Manuel R. Pugoy',
         maintainer_email='luipugs@gmail.com',
         url='https://github.com/luipugs/kamatis/',
-        description='Pomodoro timer',
+        description='Pomodoro Technique timer',
+        long_description=dedent(long_desc).strip(),
         classifiers=(
             'Development Status :: 3 - Alpha',
             'Environment :: X11 Applications :: Qt',
