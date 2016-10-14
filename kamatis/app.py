@@ -302,6 +302,17 @@ class Kamatis(QApplication):
         self.__init_state()
         self.__tray_icon.showMessage(self.__application_name, message)
 
+    def skip(self):
+        message = 'Skipping to the next period.'
+        self.__current_timer.setInterval(0)
+        self.__progress_timer.setInterval(0)
+        self.__current_timer.start()
+        self.__progress_timer.start()
+        if self.__state == 'PAUSED':
+            self.__set_state('RUNNING')
+        self.__progress = -1
+        self.__tray_icon.showMessage(self.__application_name, message)
+
     def get_remaining_time(self):
         if self.__state == 'PAUSED':
             return self.__remaining

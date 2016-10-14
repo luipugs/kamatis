@@ -98,6 +98,9 @@ class TrayIcon(QSystemTrayIcon):
             remaining_time = self.__app.get_remaining_time()
             remaining_text = self.__get_remaining_text(remaining_time)
 
+            skip = menu.addAction('Skip')
+            skip.triggered.connect(self.__app.skip)
+
             reset = menu.addAction('Reset')
             reset.triggered.connect(self.__app.reset)
 
