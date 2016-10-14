@@ -80,7 +80,7 @@ class Kamatis(QApplication):
         self.__break_timer.timeout.connect(self.__play_sound)
 
         self.__progress_timer = QTimer(self)
-        self.__break_timer.setSingleShot(True)
+        self.__progress_timer.setSingleShot(True)
         self.__progress_timer.timeout.connect(self.__start_progress_timer)
 
         self.__saved_settings = QSettingsManager()
