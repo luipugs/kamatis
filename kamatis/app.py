@@ -31,7 +31,7 @@ from kamatis.tray_icon import TrayIcon
 class Kamatis(QApplication):
 
     __application_name = 'Kamatis'
-    __desktop_file_entry = '''
+    __desktop_file_entry = '''\
         [Desktop Entry]
         Version=1.0
         Type=Application
@@ -196,7 +196,7 @@ class Kamatis(QApplication):
 
         try:
             with open(file_path, 'w') as f:
-                f.write(dedent(self.__desktop_file_entry).lstrip())
+                f.write(dedent(self.__desktop_file_entry))
         except:
             logging.warning('Cannot create autostart file.', exc_info=True)
             return False
