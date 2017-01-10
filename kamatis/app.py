@@ -102,7 +102,14 @@ class Kamatis(QApplication):
             '%(levelname)-8s %(asctime)s [%(module)s:%(funcName)s:%(lineno)s] '
             '%(message)s'
             )
-        location_type = QStandardPaths.AppLocalDataLocation
+        try:
+            location_type = QStandardPaths.AppLocalDataLocation
+        except AttributeError:
+            # AppLocalDataLocation was only added in Qt 5.4. DataLocation
+            # returns the same value as AppLocalDataLocation but is deprecated
+            # in newer Qt versions.
+            # https://doc.qt.io/qt-5/qstandardpaths.html#StandardLocation-enum
+            location_type = QStandardPaths.DataLocation
         data_dir = QStandardPaths.standardLocations(location_type)[0]
 
         console_handler = logging.StreamHandler(sys.stdout)
